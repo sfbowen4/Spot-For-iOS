@@ -1,6 +1,6 @@
 # Spot-For-iOS
 Control the Boston Dynamics Spot with an iOS device
 
-[Swift (iOS) Component](Spot For iOS/README.md)
+[Swift Component](https://github.com/sfbowen4/Spot-For-iOS/tree/main/Spot%20For%20iOS)
 
-[Python (Server) Component](Backend Python/README.md)
+[Python Component](https://github.com/sfbowen4/Spot-For-iOS/tree/main/Backend%20Python)
