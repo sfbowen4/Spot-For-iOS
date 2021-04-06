@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TakeCredentialsView: View {
     
-    @State var endpointHostname: String = "192.168.80.100"
+    @State var endpointHostname: String = "192.168.80.101"
     @State var hostPort: String = "8080"
     @State var spotIP: String = "192.168.80.3"
     @State var username: String = "Stephen"

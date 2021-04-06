@@ -1,4 +1,6 @@
 #Stephen Bowen 2021
+#System modules
+import time
 
 # Boston Dynamics modules
 from bosdyn.client.estop import EstopEndpoint, EstopKeepAlive, EstopClient
@@ -6,6 +8,9 @@ from bosdyn.client.robot_state import RobotStateClient
 from bosdyn.client.robot_command import RobotCommandBuilder, RobotCommandClient
 from bosdyn.client.lease import LeaseClient, LeaseKeepAlive
 import bosdyn.client.util
+
+#Custom modules
+from estop import EstopNoGui
 
 class SpotAPI():
 
@@ -19,7 +24,7 @@ class SpotAPI():
         estop_client = self._robot.ensure_client(EstopClient.default_service_name)
 
         # Create nogui estop
-        self.estop_nogui = EstopNoGui(estop_client, int(flask.request.args.get("timeout")), "Estop iOS")
+        self.estop_nogui = EstopNoGui(estop_client, 60, "Estop iOS")
 
         # Create robot state, command, and lease clients
         self._state_client = self._robot.ensure_client(RobotStateClient.default_service_name)
