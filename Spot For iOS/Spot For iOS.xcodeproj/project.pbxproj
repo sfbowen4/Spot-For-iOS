@@ -7,18 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC11C05126090363005D5279 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04C26090363005D5279 /* API.swift */; };
+		DC11C05226090363005D5279 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04D26090363005D5279 /* WalkingView.swift */; };
+		DC11C05326090363005D5279 /* PersistentEStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04E26090363005D5279 /* PersistentEStop.swift */; };
+		DC11C05426090363005D5279 /* WalkingControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04F26090363005D5279 /* WalkingControlsView.swift */; };
+		DC11C05526090363005D5279 /* TakeCredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C05026090363005D5279 /* TakeCredentialsView.swift */; };
 		DC6DCCFD26055BAF009A2690 /* Spot_For_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */; };
 		DC6DCCFF26055BAF009A2690 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCCFE26055BAF009A2690 /* ContentView.swift */; };
 		DC6DCD0126055BAF009A2690 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6DCD0026055BAF009A2690 /* Assets.xcassets */; };
 		DC6DCD0426055BAF009A2690 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6DCD0326055BAF009A2690 /* Preview Assets.xcassets */; };
 		DC6DCD0F26055BAF009A2690 /* Spot_For_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD0E26055BAF009A2690 /* Spot_For_iOSTests.swift */; };
 		DC6DCD1A26055BAF009A2690 /* Spot_For_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD1926055BAF009A2690 /* Spot_For_iOSUITests.swift */; };
-		DC6DCD3026055C11009A2690 /* WalkingControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2D26055C11009A2690 /* WalkingControlsView.swift */; };
-		DC6DCD3126055C11009A2690 /* PersistentEStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2C26055C11009A2690 /* PersistentEStop.swift */; };
-		DC6DCD3226055C11009A2690 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2A26055C11009A2690 /* WalkingView.swift */; };
-		DC6DCD3326055C11009A2690 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2E26055C11009A2690 /* ContentView.swift */; };
-		DC6DCD3426055C11009A2690 /* TakeCredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2F26055C11009A2690 /* TakeCredentialsView.swift */; };
-		DC6DCD3526055C11009A2690 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD2B26055C11009A2690 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DC11C04C26090363005D5279 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		DC11C04D26090363005D5279 /* WalkingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
+		DC11C04E26090363005D5279 /* PersistentEStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentEStop.swift; sourceTree = "<group>"; };
+		DC11C04F26090363005D5279 /* WalkingControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingControlsView.swift; sourceTree = "<group>"; };
+		DC11C05026090363005D5279 /* TakeCredentialsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeCredentialsView.swift; sourceTree = "<group>"; };
 		DC6DCCF926055BAF009A2690 /* Spot For iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spot For iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_For_iOSApp.swift; sourceTree = "<group>"; };
 		DC6DCCFE26055BAF009A2690 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,12 +55,6 @@
 		DC6DCD1526055BAF009A2690 /* Spot For iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spot For iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6DCD1926055BAF009A2690 /* Spot_For_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_For_iOSUITests.swift; sourceTree = "<group>"; };
 		DC6DCD1B26055BAF009A2690 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC6DCD2A26055C11009A2690 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalkingView.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/WalkingView.swift"; sourceTree = "<absolute>"; };
-		DC6DCD2B26055C11009A2690 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = API.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/API.swift"; sourceTree = "<absolute>"; };
-		DC6DCD2C26055C11009A2690 /* PersistentEStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PersistentEStop.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/PersistentEStop.swift"; sourceTree = "<absolute>"; };
-		DC6DCD2D26055C11009A2690 /* WalkingControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WalkingControlsView.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/WalkingControlsView.swift"; sourceTree = "<absolute>"; };
-		DC6DCD2E26055C11009A2690 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentView.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/ContentView.swift"; sourceTree = "<absolute>"; };
-		DC6DCD2F26055C11009A2690 /* TakeCredentialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TakeCredentialsView.swift; path = "/Users/stephen/Documents/School/Spring 2021/CS Research/Spot for iOS/Spot For iOS/Spot For iOS/TakeCredentialsView.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,12 +105,11 @@
 		DC6DCCFB26055BAF009A2690 /* Spot For iOS */ = {
 			isa = PBXGroup;
 			children = (
-				DC6DCD2B26055C11009A2690 /* API.swift */,
-				DC6DCD2E26055C11009A2690 /* ContentView.swift */,
-				DC6DCD2C26055C11009A2690 /* PersistentEStop.swift */,
-				DC6DCD2F26055C11009A2690 /* TakeCredentialsView.swift */,
-				DC6DCD2D26055C11009A2690 /* WalkingControlsView.swift */,
-				DC6DCD2A26055C11009A2690 /* WalkingView.swift */,
+				DC11C04C26090363005D5279 /* API.swift */,
+				DC11C04E26090363005D5279 /* PersistentEStop.swift */,
+				DC11C05026090363005D5279 /* TakeCredentialsView.swift */,
+				DC11C04F26090363005D5279 /* WalkingControlsView.swift */,
+				DC11C04D26090363005D5279 /* WalkingView.swift */,
 				DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */,
 				DC6DCCFE26055BAF009A2690 /* ContentView.swift */,
 				DC6DCD0026055BAF009A2690 /* Assets.xcassets */,
@@ -277,14 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC6DCD3126055C11009A2690 /* PersistentEStop.swift in Sources */,
-				DC6DCD3226055C11009A2690 /* WalkingView.swift in Sources */,
-				DC6DCD3426055C11009A2690 /* TakeCredentialsView.swift in Sources */,
-				DC6DCD3326055C11009A2690 /* ContentView.swift in Sources */,
-				DC6DCD3026055C11009A2690 /* WalkingControlsView.swift in Sources */,
+				DC11C05426090363005D5279 /* WalkingControlsView.swift in Sources */,
+				DC11C05226090363005D5279 /* WalkingView.swift in Sources */,
+				DC11C05526090363005D5279 /* TakeCredentialsView.swift in Sources */,
 				DC6DCCFF26055BAF009A2690 /* ContentView.swift in Sources */,
-				DC6DCD3526055C11009A2690 /* API.swift in Sources */,
+				DC11C05126090363005D5279 /* API.swift in Sources */,
 				DC6DCCFD26055BAF009A2690 /* Spot_For_iOSApp.swift in Sources */,
+				DC11C05326090363005D5279 /* PersistentEStop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

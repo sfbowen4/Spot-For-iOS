@@ -32,17 +32,14 @@ class SpotAPI():
     # Trigger EStop
     def stop(self):
         self.estop_nogui.stop()
-        return flask.jsonify("Success")
 
     # Clear EStop
     def ClearStop(self):
         self.estop_nogui.allow()
-        return flask.jsonify("Success")
 
     # End connection to robot --- TODO: return lease and lock robot
     def End(self):
         self.estop_nogui.estop_keep_alive.shutdown()
-        return flask.jsonify("Success")
 
     # Receive, parse, and execute a command as a string
     def GenericRequest(self, request):
@@ -65,5 +62,3 @@ class SpotAPI():
             self._robot.power_on()
             self._robot_command_client.robot_command(lease=None,command=RobotCommandBuilder.synchro_stand_command(),end_time_secs=(time.time()+30))
             self._robot_command_client.robot_command(lease=None,command=requestLibrary[request],end_time_secs=(time.time()+VELOCITY_CMD_DURATION))
-
-        return flask.jsonify("Success!")
