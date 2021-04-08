@@ -42,8 +42,10 @@ class SpotAPI():
     def ClearStop(self):
         self.estop_nogui.allow()
 
-    # End connection to robot --- TODO: return lease and lock robot
+    # End connection to robot
     def End(self):
+        # Return lease and end Estop coverage
+        self._lease_client.return_lease(self._lease)
         self.estop_nogui.estop_keep_alive.shutdown()
 
     # Receive, parse, and execute a command as a string
