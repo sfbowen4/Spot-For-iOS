@@ -3,6 +3,7 @@
 import time
 
 # Boston Dynamics modules
+from bosdyn.api.spot import robot_command_pb2 as spot_command_pb2
 from bosdyn.client.estop import EstopEndpoint, EstopKeepAlive, EstopClient
 from bosdyn.client.robot_state import RobotStateClient
 from bosdyn.client.robot_command import RobotCommandBuilder, RobotCommandClient
@@ -31,8 +32,15 @@ class SpotAPI():
         self._robot_command_client = self._robot.ensure_client(RobotCommandClient.default_service_name)
         self._lease_client = self._robot.ensure_client(LeaseClient.default_service_name)
 
-        # Acquire lease
-        self._lease = self._lease_client.acquire()
+        LeaseKeepAlive(self._lease_client)
+        self._lease_client.acquire()
+
+        # Power robot on
+        self._robot.power_on() # Power robot on. Call blocks for 20 seconds before expiring on failure
+
+    # Call function to power robot on -- must be called before executing movement commands
+    def powerOn(self):
+        self._robot.power_on() # Power robot on. Call blocks for 20 seconds before expiring on failure
 
     # Trigger EStop
     def stop(self):
@@ -41,23 +49,24 @@ class SpotAPI():
     # Clear EStop
     def ClearStop(self):
         self.estop_nogui.allow()
+        powerOn()
 
     # End connection to robot
     def End(self):
         # Return lease and end Estop coverage
-        self._lease_client.return_lease(self._lease)
+        self._lease_keep_alive.shutdown()
         self.estop_nogui.estop_keep_alive.shutdown()
 
     # Receive, parse, and execute a command as a string
     def GenericRequest(self, request):
         # Set the default speed and timing for executing velocity commands
-        VELOCITY_BASE_SPEED = 1  # m/s
+        VELOCITY_BASE_SPEED = 0.5  # m/s
         VELOCITY_BASE_ANGULAR = 0.8  # rad/sec
-        VELOCITY_CMD_DURATION = 1  # seconds
+        VELOCITY_CMD_DURATION = 0.6  # seconds
         
         requestLibrary = {
-        'sit': RobotCommandBuilder.synchro_sit_command(), # SIT
-        'stand': RobotCommandBuilder.synchro_stand_command(), # STAND
+        'sit': RobotCommandBuilder.synchro_sit_command(params=spot_command_pb2.MobilityParams(locomotion_hint=spot_command_pb2.HINT_AUTO, stair_hint=0)), # SIT
+        'stand': RobotCommandBuilder.synchro_stand_command(params=spot_command_pb2.MobilityParams(locomotion_hint=spot_command_pb2.HINT_AUTO, stair_hint=0)), # STAND
         'W': RobotCommandBuilder.synchro_velocity_command(v_x=VELOCITY_BASE_SPEED, v_y=0, v_rot=0), # FORWAWRD
         'A': RobotCommandBuilder.synchro_velocity_command(v_x=0, v_y=VELOCITY_BASE_SPEED, v_rot=0), # LEFT
         'S': RobotCommandBuilder.synchro_velocity_command(v_x=-VELOCITY_BASE_SPEED, v_y=0, v_rot=0), # BACKWARD
@@ -65,7 +74,4 @@ class SpotAPI():
         'Q': RobotCommandBuilder.synchro_velocity_command(v_x=0,v_y=0,v_rot=VELOCITY_BASE_ANGULAR), # TURN LEFT
         'E': RobotCommandBuilder.synchro_velocity_command(v_x=0,v_y=0,v_rot=-VELOCITY_BASE_ANGULAR) # TURN RIGHT
     }
-        with LeaseKeepAlive(self._lease_client):
-            self._robot.power_on()
-            self._robot_command_client.robot_command(lease=None,command=RobotCommandBuilder.synchro_stand_command(),end_time_secs=(time.time()+30))
-            self._robot_command_client.robot_command(lease=None,command=requestLibrary[request],end_time_secs=(time.time()+VELOCITY_CMD_DURATION))
+        self._robot_command_client.robot_command_async(command=requestLibrary[request],end_time_secs=(time.time()+VELOCITY_CMD_DURATION))
