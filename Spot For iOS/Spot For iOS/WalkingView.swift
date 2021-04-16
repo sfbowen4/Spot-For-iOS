@@ -29,9 +29,9 @@ struct WalkingView: View {
                     .background(Color.accentColor)
                     .clipShape(RoundedRectangle(cornerRadius: 20.0))
                     .shadow(radius: 50)
-            }.navigationBarTitle("Control Spot", displayMode: .inline)
-            //.navigationBarItems(trailing: Button(action: {TakeCredentialsView()}) {Image(systemName: "gearshape.fill").imageScale(.large) })
-        }.onAppear {
+            }
+        }.navigationBarTitle("Control Spot", displayMode: .inline)
+        .onAppear {
             self.api.StartAPIRequest()
         }
         .onDisappear() {

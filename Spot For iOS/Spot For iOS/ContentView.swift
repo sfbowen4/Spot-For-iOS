@@ -9,7 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
+    func wrapper() -> Void {
+        print("After")
+    }
+    
     var body: some View {
+        
         NavigationView {
             VStack(spacing: 50) {
                 Text("Provide your credentials to control Spot.")

@@ -89,18 +89,6 @@ class Api {
         .resume()
     }
     
-    func HelloAPIRequest() {
-        
-        guard let url = URL(string: "http://\(self.endpointHostname):\(self.hostPort)/Hello") else { return }
-        
-        URLSession.shared.dataTask(with: url) {(data, _, _) in
-            _ = try! JSONDecoder().decode(String.self, from: data!)
-            DispatchQueue.main.async {
-            }
-        }
-        .resume()
-    }
-    
     func genericAPIRequest(request: String) {
         guard let url = URL(string: "http://\(self.endpointHostname):\(self.hostPort)/GenericRequest?request=\(request)") else { return }
         

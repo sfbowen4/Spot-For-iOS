@@ -12,6 +12,7 @@
 		DC11C05326090363005D5279 /* PersistentEStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04E26090363005D5279 /* PersistentEStop.swift */; };
 		DC11C05426090363005D5279 /* WalkingControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C04F26090363005D5279 /* WalkingControlsView.swift */; };
 		DC11C05526090363005D5279 /* TakeCredentialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC11C05026090363005D5279 /* TakeCredentialsView.swift */; };
+		DC53815926292DBC009E34E5 /* MovementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC53815826292DBC009E34E5 /* MovementButton.swift */; };
 		DC6DCCFD26055BAF009A2690 /* Spot_For_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */; };
 		DC6DCCFF26055BAF009A2690 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCCFE26055BAF009A2690 /* ContentView.swift */; };
 		DC6DCD0126055BAF009A2690 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6DCD0026055BAF009A2690 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 		DC11C04E26090363005D5279 /* PersistentEStop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentEStop.swift; sourceTree = "<group>"; };
 		DC11C04F26090363005D5279 /* WalkingControlsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkingControlsView.swift; sourceTree = "<group>"; };
 		DC11C05026090363005D5279 /* TakeCredentialsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeCredentialsView.swift; sourceTree = "<group>"; };
+		DC53815826292DBC009E34E5 /* MovementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementButton.swift; sourceTree = "<group>"; };
 		DC6DCCF926055BAF009A2690 /* Spot For iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spot For iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_For_iOSApp.swift; sourceTree = "<group>"; };
 		DC6DCCFE26055BAF009A2690 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				DC11C04E26090363005D5279 /* PersistentEStop.swift */,
 				DC11C05026090363005D5279 /* TakeCredentialsView.swift */,
 				DC11C04F26090363005D5279 /* WalkingControlsView.swift */,
+				DC53815826292DBC009E34E5 /* MovementButton.swift */,
 				DC11C04D26090363005D5279 /* WalkingView.swift */,
 				DC6DCCFC26055BAF009A2690 /* Spot_For_iOSApp.swift */,
 				DC6DCCFE26055BAF009A2690 /* ContentView.swift */,
@@ -280,6 +283,7 @@
 				DC6DCCFF26055BAF009A2690 /* ContentView.swift in Sources */,
 				DC11C05126090363005D5279 /* API.swift in Sources */,
 				DC6DCCFD26055BAF009A2690 /* Spot_For_iOSApp.swift in Sources */,
+				DC53815926292DBC009E34E5 /* MovementButton.swift in Sources */,
 				DC11C05326090363005D5279 /* PersistentEStop.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

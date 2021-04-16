@@ -72,4 +72,4 @@ def End():
 
 # Run web app on local machine
 if __name__ == '__main__':
-    app.run(host="192.168.80.102", port=8080)
+    app.run(host="192.168.80.100", port=8080)

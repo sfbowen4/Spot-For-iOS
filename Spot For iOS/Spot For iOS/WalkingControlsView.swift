@@ -15,35 +15,35 @@ class WASD {
         self.api = api
     }
     
-    func W() {
+    func W() -> Void {
         self.api.genericAPIRequest(request: "W")
     }
     
-    func A() {
+    func A() -> Void {
         self.api.genericAPIRequest(request: "A")
     }
     
-    func S() {
+    func S() -> Void {
         self.api.genericAPIRequest(request: "S")
     }
     
-    func D() {
+    func D() -> Void {
         self.api.genericAPIRequest(request: "D")
     }
     
-    func Q() {
+    func Q() -> Void {
         self.api.genericAPIRequest(request: "Q")
     }
     
-    func E() {
+    func E() -> Void {
         self.api.genericAPIRequest(request: "E")
     }
     
-    func Sit() {
+    func Sit() -> Void {
         self.api.genericAPIRequest(request: "sit")
     }
     
-    func Stand() {
+    func Stand() -> Void {
         self.api.genericAPIRequest(request: "stand")
     }
 }
@@ -53,6 +53,7 @@ struct WalkingControlsView: View {
     let api: Api
     let wasd: WASD
     @State var standing = false
+    @State var loop = false
     
     init(api: Api) {
         self.api = api
@@ -65,59 +66,15 @@ struct WalkingControlsView: View {
         
             HStack(spacing: 20) {
                 
-                Button(action: {
-                    //Left Turn
-                    self.wasd.Q()
-                }) {
-                    HStack {
-                            Image(systemName: "arrow.turn.up.left")
-                            }
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
-                        .background(Capsule().fill(Color.blue))
-                }
-            
-                Button(action: {
-                    //Forward
-                    self.wasd.W()
-                }) {
-                    HStack {
-                        Image(systemName: "arrow.up")
-                            }
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
-                        .background(Capsule().fill(Color.blue))
-                }.onLongPressGesture(minimumDuration: 0.0, pressing: { (isPressing) in
-                }, perform: {
-                    self.wasd.W()
-                })
+                MovementButton(buttonFunction: self.wasd.Q, buttonType: Image(systemName: "arrow.turn.up.left"))
+                MovementButton(buttonFunction: self.wasd.W, buttonType: Image(systemName: "arrow.up"))
+                MovementButton(buttonFunction: self.wasd.E, buttonType: Image(systemName: "arrow.turn.up.right"))
                 
-                Button(action: {
-                    //Right Turn
-                    self.wasd.E()
-                }) {
-                    HStack {
-                            Image(systemName: "arrow.turn.up.right")
-                            }
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
-                        .background(Capsule().fill(Color.blue))
-                }
             }
             
             HStack(spacing: 20) {
                 
-                Button(action: {
-                    //Left Strafe
-                    self.wasd.A()
-                }) {
-                    HStack {
-                            Image(systemName: "arrow.left")
-                            }
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
-                        .background(Capsule().fill(Color.blue))
-                }
+                MovementButton(buttonFunction: self.wasd.A, buttonType: Image(systemName: "arrow.left"))
             
                 Button(action: {
                     if (!standing) {
@@ -142,30 +99,12 @@ struct WalkingControlsView: View {
                         .background(Capsule().fill(Color.blue))
                 }
                 
-                Button(action: {
-                    //Right Strafe
-                    self.wasd.D()
-                }) {
-                    HStack {
-                            Image(systemName: "arrow.right")
-                            }
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
-                        .background(Capsule().fill(Color.blue))
-                }
+                MovementButton(buttonFunction: self.wasd.D, buttonType: Image(systemName: "arrow.right"))
+                
             }
             
-            Button(action: {
-                //Backwards
-                self.wasd.S()
-            }) {
-                HStack {
-                        Image(systemName: "arrow.down")
-                        }
-                    .frame(width: 100, height: 100)
-                    .foregroundColor(.white)
-                    .background(Capsule().fill(Color.blue))
-            }
+            MovementButton(buttonFunction: self.wasd.S, buttonType: Image(systemName: "arrow.down"))
+            
         }.font(.system(size: 60))
     }
 }
