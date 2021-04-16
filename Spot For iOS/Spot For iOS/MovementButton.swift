@@ -35,9 +35,9 @@ struct MovementButton: View {
                 .foregroundColor(.white)
                 .background(Capsule().fill(Color.blue))
         })
-        .simultaneousGesture(LongPressGesture(minimumDuration: 0.2).onEnded { _ in
+        .simultaneousGesture(LongPressGesture(minimumDuration: 0.05).onEnded { _ in
             self.isLongPressing = true
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.6, repeats: true, block: { _ in
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true, block: { _ in
                 buttonFunction()
             })
         })
