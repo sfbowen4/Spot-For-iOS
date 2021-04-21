@@ -17,7 +17,6 @@ struct WalkingView: View {
     
     var body: some View {
         NavigationView {
-        
             VStack(spacing: 50) {
                 WalkingControlsView(api: api)
                     .padding(.all, 25)
