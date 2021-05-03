@@ -2,10 +2,6 @@
 
 # Boston Dynamics modules
 from bosdyn.client.estop import EstopEndpoint, EstopKeepAlive, EstopClient
-from bosdyn.client.robot_state import RobotStateClient
-from bosdyn.client.robot_command import RobotCommandBuilder, RobotCommandClient
-from bosdyn.client.lease import LeaseClient, LeaseKeepAlive
-import bosdyn.client.util
 
 class EstopNoGui():
     

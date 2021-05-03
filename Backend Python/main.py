@@ -6,6 +6,7 @@ import os
 import time
 import requests
 import logging
+import socket
 
 # Server modules
 import flask
@@ -14,6 +15,14 @@ from flask import Flask
 # Custom modules
 from estop import EstopNoGui
 from API import SpotAPI
+
+# Define function for retrieving local IP address
+def getIP():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
 
 # Set the web app name and create the app object
 app = Flask("SpotAPI")
@@ -72,4 +81,4 @@ def End():
 
 # Run web app on local machine
 if __name__ == '__main__':
-    app.run(host="192.168.80.100", port=8080)
+    app.run(host=getIP(), port=8080)

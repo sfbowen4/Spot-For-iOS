@@ -32,14 +32,13 @@ class SpotAPI():
         self._robot_command_client = self._robot.ensure_client(RobotCommandClient.default_service_name)
         self._lease_client = self._robot.ensure_client(LeaseClient.default_service_name)
 
-        LeaseKeepAlive(self._lease_client)
-        self._lease_client.acquire()
+        # Acquire and retain lease and robot id
+        self._lease = self._lease_client.acquire()
+        # Construct our lease keep-alive object, which begins RetainLease calls in a thread.
+        self._lease_keepalive = LeaseKeepAlive(self._lease_client)
+        self._robot_id = self._robot.get_id()
 
         # Power robot on
-        self._robot.power_on() # Power robot on. Call blocks for 20 seconds before expiring on failure
-
-    # Call function to power robot on -- must be called before executing movement commands
-    def powerOn(self):
         self._robot.power_on() # Power robot on. Call blocks for 20 seconds before expiring on failure
 
     # Trigger EStop
@@ -49,12 +48,14 @@ class SpotAPI():
     # Clear EStop
     def ClearStop(self):
         self.estop_nogui.allow()
-        powerOn()
+        self._robot.power_on()
 
     # End connection to robot
     def End(self):
         # Return lease and end Estop coverage
-        self._lease_keep_alive.shutdown()
+        self._lease_client.return_lease(self._lease)
+        self._lease_keepalive.shutdown()
+        self._lease_keepalive = None
         self.estop_nogui.estop_keep_alive.shutdown()
 
     # Receive, parse, and execute a command as a string
