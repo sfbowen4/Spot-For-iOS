@@ -19,7 +19,7 @@ from API import SpotAPI
 # Define function for retrieving local IP address
 def getIP():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
+    s.connect(("192.168.80.3", 80))
     ip = s.getsockname()[0]
     s.close()
     return ip
