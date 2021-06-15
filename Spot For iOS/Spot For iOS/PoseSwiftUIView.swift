@@ -45,9 +45,9 @@ struct PoseSwiftUIView: View {
             
             // Sliders for manual adjustment
             VStack {
-                Slider(value: $yaw, in: -1...1).onChange(of: yaw) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
-                Slider(value: $roll, in: -1...1).onChange(of: roll) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
-                Slider(value: $pitch, in: -1...1).onChange(of: pitch) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
+                Slider(value: $yaw, in: -1...1, step: 0.15).onChange(of: yaw) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
+                Slider(value: $roll, in: -1...1, step: 0.15).onChange(of: roll) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
+                Slider(value: $pitch, in: -1...1, step: 0.15).onChange(of: pitch) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
             }.padding(25)
         }.navigationBarTitle("Set Pose", displayMode: .inline)
         .onAppear { api.genericMovement(request: "stand") }
