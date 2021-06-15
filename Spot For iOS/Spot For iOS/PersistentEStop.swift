@@ -9,17 +9,14 @@ import SwiftUI
 
 struct PersistentEStop: View {
     
-    let api: Api
+    @EnvironmentObject var api: Api
     
-    init(api: Api) {
-        self.api = api
-    }
-    
+    // Main View
     var body: some View {
         HStack(alignment: .center, spacing: 20) {
             Button(action: {
-                //Action: Trigger EStop
-                self.api.StopAPIRequest()
+                // Trigger EStop
+                self.api.eStop() { decodedResponse in }
             }) {
                 Image("stop-sign")
                     .resizable()
@@ -43,8 +40,8 @@ struct PersistentEStop: View {
                     })
                 
                 Button(action: {
-                    self.api.ClearStopAPIRequest()
-                    //Action: Clear EStop
+                    // Clear EStop
+                    self.api.clearEStop() { decodedResponse in }
                 }) {
                     HStack {
                         Text("Clear Stop")

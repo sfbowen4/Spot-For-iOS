@@ -28,57 +28,72 @@ def getIP():
 app = Flask("SpotAPI")
 
 # Log user into spot and create instance of API
-@app.route('/start')
-def start():
-    print("Starting")
+@app.route('/Auth')
+def authenticate():
     global activeAPI
     try:
-        activeAPI = SpotAPI(flask.request.args.get("user"), flask.request.args.get("pass"))
-        return flask.jsonify("Success!")
+        activeAPI = SpotAPI(flask.request.args.get("user"), flask.request.args.get("pass"), flask.request.args.get("host"))
+        return flask.jsonify({"value": activeAPI.auth()})
     except:
-        return flask.jsonify("Failure")
+        return flask.jsonify({"value": False})
+
+# Toggle robot power
+@app.route('/TogglePower')
+def togglePower():
+    global activeAPI
+    try:
+        return flask.jsonify({"value": activeAPI.togglePower()})
+    except:
+        return flask.jsonify({"value": False})
 
 # Receive generic request and execute the command
-@app.route('/GenericRequest')
-def GenericRequest():
+@app.route('/GenericMovementRequest')
+def genericMovement():
     global activeAPI
     try:
-        activeAPI.GenericRequest(flask.request.args.get("request"))
-        return flask.jsonify("Success!")
+        return flask.jsonify({"value": activeAPI.genericMovement(flask.request.args.get("request"))})
     except:
-        return flask.jsonify("Failure")
+        return flask.jsonify({"value": False})
+
+# Receive yaw, roll, and pitch then set Spot's standing pose
+@app.route('/SetPose')
+def setPose():
+    try:
+        global activeAPI
+        return flask.jsonify({"value": activeAPI.setPose(float(flask.request.args.get("yaw")), float(flask.request.args.get("roll")), float(flask.request.args.get("pitch")))})
+    except:
+        return flask.jsonify({"value": False})
 
 # Trigger EStop
-@app.route('/stop')
-def stop():
+@app.route('/EStop')
+def eStop():
     global activeAPI
     try:
-        activeAPI.stop()
-        return flask.jsonify("Success!")
+        return flask.jsonify({"value": activeAPI.eStop()})
     except:
-        return flask.jsonify("Failure")
+        return flask.jsonify({"value": False})
 
 # Clear EStop
-@app.route('/ClearStop')
-def clearStop():
+@app.route('/ClearEStop')
+def clearEStop():
     global activeAPI
     try:
-        activeAPI.ClearStop()
-        return flask.jsonify("Success!")
+        return flask.jsonify({"value": activeAPI.clearEStop()})
     except:
-        return flask.jsonify("Failure")
+        return flask.jsonify({"value": False})
 
 # End connection to robot and set activeAPI to NULL
-@app.route('/End')
-def End():
+@app.route('/EndConnection')
+def endConnection():
     global activeAPI
     try:
-        activeAPI.End()
+        status = activeAPI.endConnection()
         activeAPI = None
-        return flask.jsonify("Success!")
+        return flask.jsonify({"value": satus})
     except:
-        return flask.jsonify("Failure")
+        return flask.jsonify({"value": False})
 
-# Run web app on local machine
+# Run web app on this machine
 if __name__ == '__main__':
+    print(getIP())
     app.run(host=getIP(), port=8080)

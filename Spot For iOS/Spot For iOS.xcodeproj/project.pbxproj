@@ -20,6 +20,9 @@
 		DC6DCD0426055BAF009A2690 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC6DCD0326055BAF009A2690 /* Preview Assets.xcassets */; };
 		DC6DCD0F26055BAF009A2690 /* Spot_For_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD0E26055BAF009A2690 /* Spot_For_iOSTests.swift */; };
 		DC6DCD1A26055BAF009A2690 /* Spot_For_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6DCD1926055BAF009A2690 /* Spot_For_iOSUITests.swift */; };
+		DC8D88742678539D00254BCB /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8D88732678539D00254BCB /* Spinner.swift */; };
+		DCECFFBB2671A45600C86D29 /* PoseSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECFFBA2671A45600C86D29 /* PoseSwiftUIView.swift */; };
+		DCECFFBD2671C7DE00C86D29 /* SelectModeSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCECFFBC2671C7DE00C86D29 /* SelectModeSwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		DC6DCD1526055BAF009A2690 /* Spot For iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spot For iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6DCD1926055BAF009A2690 /* Spot_For_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot_For_iOSUITests.swift; sourceTree = "<group>"; };
 		DC6DCD1B26055BAF009A2690 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC8D88732678539D00254BCB /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
+		DCECFFBA2671A45600C86D29 /* PoseSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseSwiftUIView.swift; sourceTree = "<group>"; };
+		DCECFFBC2671C7DE00C86D29 /* SelectModeSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectModeSwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,9 @@
 		DC6DCCFB26055BAF009A2690 /* Spot For iOS */ = {
 			isa = PBXGroup;
 			children = (
+				DC8D88732678539D00254BCB /* Spinner.swift */,
+				DCECFFBC2671C7DE00C86D29 /* SelectModeSwiftUIView.swift */,
+				DCECFFBA2671A45600C86D29 /* PoseSwiftUIView.swift */,
 				DC11C04C26090363005D5279 /* API.swift */,
 				8C059EDF262F907100E62BE1 /* FollowSwiftUIView.swift */,
 				DC11C04E26090363005D5279 /* PersistentEStop.swift */,
@@ -282,9 +291,12 @@
 			files = (
 				DC11C05426090363005D5279 /* WalkingControlsView.swift in Sources */,
 				8C059EE0262F907100E62BE1 /* FollowSwiftUIView.swift in Sources */,
+				DCECFFBD2671C7DE00C86D29 /* SelectModeSwiftUIView.swift in Sources */,
 				DC11C05226090363005D5279 /* WalkingView.swift in Sources */,
 				DC11C05526090363005D5279 /* TakeCredentialsView.swift in Sources */,
 				DC6DCCFF26055BAF009A2690 /* ContentView.swift in Sources */,
+				DCECFFBB2671A45600C86D29 /* PoseSwiftUIView.swift in Sources */,
+				DC8D88742678539D00254BCB /* Spinner.swift in Sources */,
 				DC11C05126090363005D5279 /* API.swift in Sources */,
 				DC6DCCFD26055BAF009A2690 /* Spot_For_iOSApp.swift in Sources */,
 				DC53815926292DBC009E34E5 /* MovementButton.swift in Sources */,

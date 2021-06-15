@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Special button view to allow for long pressing to loop function
 struct MovementButton: View {
     
     @State private var timer: Timer?
@@ -19,9 +20,13 @@ struct MovementButton: View {
         self.buttonType = buttonType
     }
     
+    // Main View
     var body: some View {
         
         Button(action: {
+            // Immediately call the buttonFunction before looping
+            buttonFunction()
+            // Check if long pressing and enter long press loop
             if(self.isLongPressing){
                 self.isLongPressing.toggle()
                 self.timer?.invalidate()
@@ -37,6 +42,8 @@ struct MovementButton: View {
         })
         .simultaneousGesture(LongPressGesture(minimumDuration: 0.0).onEnded { _ in
             self.isLongPressing = true
+            
+            // Set interval time for looping function call
             self.timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
                 buttonFunction()
             })

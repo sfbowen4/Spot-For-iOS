@@ -26,9 +26,15 @@ class EstopNoGui():
 
     def stop(self):
         self.estop_keep_alive.stop()
+        return False
+
 
     def allow(self):
-        self.estop_keep_alive.allow()
+        try:
+            self.estop_keep_alive.allow()
+            return True
+        except:
+            return False
 
     def settle_then_cut(self):
         self.estop_keep_alive.settle_then_cut()
