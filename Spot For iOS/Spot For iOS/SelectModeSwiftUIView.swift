@@ -17,9 +17,10 @@ struct SelectModeSwiftUIView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     let backgroundQueue = DispatchQueue(label: "com.sfbowen4.Spot-For-iOS.queue")
     
+    // TODO: Make a more graceful way to power off Spot during sign off
     // Power off, "sign out" of Spot, and close the view
     func signOut() {
-        while (poweredOn == true) {
+        if (poweredOn == true) {
             api.togglePower() { decodedResposne in
                 poweredOn = decodedResposne.value
             }
@@ -36,8 +37,8 @@ struct SelectModeSwiftUIView: View {
                         backgroundQueue.async {
                             togglingPower.toggle()
                             api.togglePower() { decodedResposne in
-                                poweredOn = decodedResposne.value
-                                showingAlert = !decodedResposne.value
+                                showingAlert = (decodedResposne.value != poweredOn) ? false : true // Check for successful toggle of power
+                                poweredOn = decodedResposne.value // Set power status
                             }
                             togglingPower.toggle()
                         }

@@ -18,9 +18,9 @@ struct PoseSwiftUIView: View {
     
     // Start reading attitude data from iOS device
     func readAttitude() {
-        manager.deviceMotionUpdateInterval = 0.1
+        manager.deviceMotionUpdateInterval = 0.1 // 10hz refresh rate for updating attitude readings -- TODO: Add ability to dynamically change refresh rate in app (maybe a slider)
         manager.startDeviceMotionUpdates(to: .main) { (motion, error) in
-            self.pitch = (motion!.attitude.pitch * -1) // Flip to negative to match Spot's output
+            self.pitch = (motion!.attitude.pitch * -1) // Flip to negative to match Spot's input
             self.roll = motion!.attitude.roll
             self.yaw = motion!.attitude.yaw
         }
@@ -49,6 +49,14 @@ struct PoseSwiftUIView: View {
                 Slider(value: $roll, in: -1...1, step: 0.15).onChange(of: roll) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
                 Slider(value: $pitch, in: -1...1, step: 0.15).onChange(of: pitch) { newValue in api.setPose(yaw: yaw, roll: roll, pitch: pitch) }
             }.padding(25)
+            
+            // EStop
+            PersistentEStop().environmentObject(api)
+                .padding(.all, 25)
+                .background(Color.accentColor)
+                .clipShape(RoundedRectangle(cornerRadius: 20.0))
+                .shadow(radius: 50)
+            
         }.navigationBarTitle("Set Pose", displayMode: .inline)
         .onAppear { api.genericMovement(request: "stand") }
         .onDisappear { api.genericMovement(request: "sit") }

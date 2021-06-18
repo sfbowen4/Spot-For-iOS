@@ -89,7 +89,7 @@ def endConnection():
     try:
         status = activeAPI.endConnection()
         activeAPI = None
-        return flask.jsonify({"value": satus})
+        return flask.jsonify({"value": status})
     except:
         return flask.jsonify({"value": False})
 

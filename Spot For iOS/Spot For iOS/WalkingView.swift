@@ -25,5 +25,6 @@ struct WalkingView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 20.0))
                 .shadow(radius: 50)
         }.navigationBarTitle("Control Spot", displayMode: .inline)
+        .onDisappear { api.genericMovement(request: "sit") } // Sit Spot when exiting the view
     }
 }

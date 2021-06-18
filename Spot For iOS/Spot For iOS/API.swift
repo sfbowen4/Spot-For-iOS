@@ -48,28 +48,6 @@ class Api: ObservableObject {
         
     }
     
-    // End API connection to Spot and "sign out"
-    func endConnection(completion: @escaping (Response) -> ()) {
-        guard let url = URL(string: "http://\(self.endpointHostname):\(self.hostPort)/EndConnection") else { return }
-
-        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
-            if (error == nil) {
-                if let data = data {
-                    if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
-                        DispatchQueue.main.async {
-                            completion(decodedResponse)
-                        }
-                        return
-                    }
-                }
-            }
-            else {
-                completion(Response(value: false))
-                return
-            }
-        }.resume()
-    }
-    
     // Check user's credentials with Spot and "sign in"
     func authenticate(completion: @escaping (Response) -> ()) {
         let semaphore = DispatchSemaphore(value: 0)
@@ -95,7 +73,29 @@ class Api: ObservableObject {
         semaphore.wait()
     }
     
-    // Power Spot on
+    // End API connection to Spot and "sign out"
+    func endConnection(completion: @escaping (Response) -> ()) {
+        guard let url = URL(string: "http://\(self.endpointHostname):\(self.hostPort)/EndConnection") else { return }
+
+        URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
+            if (error == nil) {
+                if let data = data {
+                    if let decodedResponse = try? JSONDecoder().decode(Response.self, from: data) {
+                        DispatchQueue.main.async {
+                            completion(decodedResponse)
+                        }
+                        return
+                    }
+                }
+            }
+            else {
+                completion(Response(value: false))
+                return
+            }
+        }.resume()
+    }
+    
+    // Power Spot on/off
     func togglePower(completion: @escaping (Response) -> ()) {
         let semaphore = DispatchSemaphore(value: 0)
         guard let url = URL(string: "http://\(self.endpointHostname):\(self.hostPort)/TogglePower") else { return }

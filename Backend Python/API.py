@@ -31,6 +31,7 @@ class SpotAPI():
             sdk = bosdyn.client.create_standard_sdk('Spot for iOS')
             self._robot = sdk.create_robot(self.spotIP)
             self._robot.authenticate(self.__username, self.__password)
+            
             # Create estop client for the robot
             estop_client = self._robot.ensure_client(EstopClient.default_service_name)
 
@@ -44,9 +45,12 @@ class SpotAPI():
 
             # Acquire and retain lease and robot id
             self._lease = self._lease_client.acquire()
+
             # Construct our lease keep-alive object, which begins RetainLease calls in a thread.
             self._lease_keepalive = LeaseKeepAlive(self._lease_client)
             self._robot_id = self._robot.get_id()
+            
+            return True
         except:
             return False
 
